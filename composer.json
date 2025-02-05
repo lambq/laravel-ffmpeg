@@ -1,0 +1,57 @@
+{
+    "name": "lambq/laravel-ffmpeg",
+    "description": "FFMpeg for Laravel",
+    "keywords": [
+        "lambq",
+        "laravel-ffmpeg"
+    ],
+    "homepage": "https://github.com/lambq/laravel-ffmpeg",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "lambq",
+            "email": "cbterli@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "illuminate/config": "^6.0",
+        "illuminate/filesystem": "^6.0",
+        "illuminate/log": "^6.0",
+        "illuminate/support": "^6.0",
+        "league/flysystem": "^1.0.8",
+        "php-ffmpeg/php-ffmpeg": "~0.13",
+        "symfony/process": "^4.3.4"
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.2.3",
+        "phpunit/phpunit": "^8.3",
+        "twistor/flysystem-http": "^0.2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lambq\\LaravelFfmpeg\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Lambq\\LaravelFfmpeg\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Lambq\\LaravelFfmpeg\\FFMpegServiceProvider"
+            ],
+            "aliases": {
+                "LaravelFFMpeg": "Lambq\\LaravelFfmpeg\\FFMpegFacade"
+            }
+        }
+    }
+}
