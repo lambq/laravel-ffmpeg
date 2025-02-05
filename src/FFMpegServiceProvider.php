@@ -4,6 +4,7 @@ namespace Lambq\LaravelFfmpeg;
 
 use Illuminate\Support\ServiceProvider;
 use Lambq\LaravelFfmpeg\FFMpeg;
+
 class FFMpegServiceProvider extends ServiceProvider
 {
     /**
@@ -11,20 +12,34 @@ class FFMpegServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->publishes([
-            __DIR__ . '/../config/laravel-ffmpeg.php' => config_path('laravel-ffmpeg.php'),
-        ], 'config');
+        $this->mergeConfigFrom(__DIR__ . '/../config/laravel-ffmpeg.php','laravel-ffmpeg');
+        $this->registerPublishing();
+    }
+
+    public function register()
+    {
+        $this->app->singleton('LaravelFfmpeg', function ($app) {
+            return $app->make(FFMpeg::class);
+        });
     }
 
     /**
-     * Register the application services.
+     * @return array
      */
-    public function register()
+    public function provides()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/laravel-ffmpeg.php', 'laravel-ffmpeg');
+        return ['LaravelFfmpeg'];
+    }
 
-        $this->app->singleton('laravel-ffmpeg', function ($app) {
-            return $app->make(FFMpeg::class);
-        });
+    /**
+     * 资源发布注册.
+     *
+     * @return void
+     */
+    protected function registerPublishing()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->publishes([__DIR__ . '/../config/laravel-ffmpeg.php' => config_path('laravel-ffmpeg.php'), 'lambq-ffmpeg-config']);
+        }
     }
 }
