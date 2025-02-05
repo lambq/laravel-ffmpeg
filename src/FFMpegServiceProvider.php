@@ -39,7 +39,7 @@ class FFMpegServiceProvider extends ServiceProvider
     protected function registerPublishing()
     {
         if ($this->app->runningInConsole()) {
-            $this->publishes([__DIR__ . '/../config/laravel-ffmpeg.php' => config_path('laravel-ffmpeg.php'), 'lambq-ffmpeg-config']);
+            $this->publishes([__DIR__ . '/../config/laravel-ffmpeg.php' => config_path('laravel-ffmpeg.php'), 'laravel-ffmpeg']);
         }
     }
 }
