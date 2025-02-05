@@ -21,6 +21,7 @@ class FFMpegServiceProvider extends ServiceProvider
         $this->app->singleton('LaravelFfmpeg', function ($app) {
             return $app->make(FFMpeg::class);
         });
+        $this->app->alias(FFMpeg::class, 'laravel.ffmpeg');
     }
 
     /**
@@ -39,7 +40,7 @@ class FFMpegServiceProvider extends ServiceProvider
     protected function registerPublishing()
     {
         if ($this->app->runningInConsole()) {
-            $this->publishes([__DIR__ . '/../config/laravel-ffmpeg.php' => config_path('laravel-ffmpeg.php'), 'laravel-ffmpeg']);
+            $this->publishes([__DIR__. '/../config/laravel-ffmpeg.php' => config_path('laravel-ffmpeg.php'), 'laravel-ffmpeg-config']);
         }
     }
 }

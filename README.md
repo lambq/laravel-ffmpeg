@@ -30,7 +30,7 @@ Only the master branch and version 5.0 of this package are compatible with Larav
 You can install the package via composer:
 
 ``` bash
-composer require pbmedia/laravel-ffmpeg
+composer require lambq/laravel-ffmpeg
 ```
 
 Add the Service Provider and Facade to your ```app.php``` config file if you're not using Package Discovery.
