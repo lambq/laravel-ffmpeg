@@ -50,7 +50,7 @@
                 "Lambq\\LaravelFfmpeg\\FFMpegServiceProvider"
             ],
             "aliases": {
-                "LaravelFFMpeg": "Lambq\\LaravelFfmpeg\\FFMpegFacade"
+                "LaravelFfmpeg": "Lambq\\LaravelFfmpeg\\Facades\\FFMpeg"
             }
         }
     }
