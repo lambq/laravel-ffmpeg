@@ -41,13 +41,13 @@ Add the Service Provider and Facade to your ```app.php``` config file if you're 
 
 'providers' => [
     ...
-    Pbmedia\LaravelFFMpeg\FFMpegServiceProvider::class,
+    Lambq\LaravelFfmpeg\FFMpegServiceProvider::class,
     ...
 ];
 
 'aliases' => [
     ...
-    'FFMpeg' => Pbmedia\LaravelFFMpeg\FFMpegFacade::class
+    'FFMpeg' => Lambq\LaravelFfmpeg\Facades\FFMpeg::class
     ...
 ];
 ```
@@ -55,7 +55,7 @@ Add the Service Provider and Facade to your ```app.php``` config file if you're 
 Publish the config file using the artisan CLI tool:
 
 ``` bash
-php artisan vendor:publish --provider="Pbmedia\LaravelFFMpeg\FFMpegServiceProvider"
+php artisan vendor:publish --provider="Lambq\LaravelFfmpeg\FFMpegServiceProvider"
 ```
 
 ## Usage
@@ -63,6 +63,8 @@ php artisan vendor:publish --provider="Pbmedia\LaravelFFMpeg\FFMpegServiceProvid
 Convert an audio or video file:
 
 ``` php
+use Lambq\LaravelFfmpeg\Facades\FFMpeg;
+
 FFMpeg::fromDisk('songs')
     ->open('yesterday.mp3')
     ->export()
